@@ -1,0 +1,59 @@
+body {
+    background-color: #faf6ed;
+
+}
+
+
+nav {
+    background-color: #ffebd9;
+    margin: -8px;
+
+}
+
+
+.banner {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 50px;
+    background-color: #ffebf7;
+    max-height: 150px;
+
+}
+.navBar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 3%;
+    justify-content: space-between;
+    background-color: #ffecd9;
+    border-color: #c4a68a;
+    border-top: 10px solid #c4a68a;
+    border-bottom:10px solid #c4a68a;;
+
+
+}
+
+:link {
+    border-color: red;
+    background-color: #ffebf7;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #c7a0b8;
+    display: inline-block;
+    width: 150px;
+    border: 1px solid #c7a0b8;
+    text-align: center;
+    border-radius: 25px;
+
+
+}
+
+:visited {
+    color: #c7a0b8;
+
+
+
+}
+

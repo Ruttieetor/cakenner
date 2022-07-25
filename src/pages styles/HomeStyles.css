@@ -1,0 +1,68 @@
+
+
+home {
+    display: flex;
+}
+
+HomeAll{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+
+
+.recipeHome{
+    margin-top: 10px;
+    border: 5px solid;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #c4a68a;
+    background-color: #ffebf7;
+
+    margin: 10px;
+
+    object-fit:cover;
+    width:  200px;
+    height: 250px;
+
+
+    flex-direction: column;
+
+
+
+
+}
+
+.recipeHome:visited{
+
+}
+
+
+.recipeHome:hover{
+    transform: scale(1.5);
+}
+
+.recipeHome img{
+    max-width: 175px;
+    max-height: 75px;
+    width: auto;
+    height: auto;
+
+
+    background-color: #ffebf7;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #c4a68a;
+
+
+
+}
+
+.rating {
+    font-size: 20px;
+}
+
+.smallText{
+    font-size: 10px;
+}

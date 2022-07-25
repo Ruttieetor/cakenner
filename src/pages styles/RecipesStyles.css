@@ -1,0 +1,19 @@
+.MainTable {
+    width: 100%;
+    display: table;
+
+    margin-top: 10px;
+
+
+}
+
+.TableHead{
+    background-color: #c4a68a;
+
+}
+
+.TableCell{
+    display: table-row;
+    border: solid;
+    border-width: 1px 0;
+}

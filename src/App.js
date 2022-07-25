@@ -1,11 +1,12 @@
 
 import './App.css';
+import React from "@types/react";
 
-function App() {
+
+
+function App(){
   return (
-    <div>
-      hello
-    </div>
+     <h1></h1>
   );
 }
 
