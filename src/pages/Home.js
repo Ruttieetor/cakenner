@@ -29,8 +29,8 @@ const Home = () => {
     return <div className="HomeAll">
 
         {
-                recipes.map((recipes) => {
-                return <Link to={"/Recipe/" + recipes.id}  className="recipeHome">
+                recipes.map((recipes, key) => {
+                return <Link to={"/Recipe/" + recipes.id}  className="recipeHome"  key={key}>
                     <p>{recipes.name}</p>
                     <img src={recipes.pictureLink} />
                     <p className= "smallText">Rating:</p>

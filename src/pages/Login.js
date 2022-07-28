@@ -2,12 +2,17 @@ import {Component, useEffect, useState} from "react";
 import axios from'axios'
 import '../pages styles/HomeStyles.css';
 import {Link} from "react-router-dom";
+import {Navigate } from 'react-router-dom';
+import jwtDecode from "jwt-decode";
 
 const Login = () => {
-
     const [username, setUsername]=useState('');
     const [password, setPassword]=useState('');
-
+    const [showError, setShowError]=useState('');
+    const decode = jwtDecode(localStorage.getItem('token'));
+    const refresh = () => {
+        window.location.reload();
+    }
     async function login(e){
         e.preventDefault()
         console.log(username,password)
@@ -17,9 +22,15 @@ const Login = () => {
                 username: username,
                 password: password
             });
-            localStorage.setItem('token', response.data)
+            localStorage.setItem('token', response.data);
+            console.log(jwtDecode(response.data))
+            console.log(Date.now());
+
+            refresh();
+
                 }catch(e){
             console.error(e);
+            setShowError("Username or password incorrect");
 
         }
 
@@ -48,13 +59,14 @@ const Login = () => {
                     id="loginpassword"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+
                 />
             </label>
             <div>
                 <button type="login">Submit</button>
             </div>
         </form>
-            <p>{localStorage.getItem('token')}</p>
+            <p>{showError}</p>
         </div>
     )
 };
