@@ -1,7 +1,20 @@
 import { Outlet, Link } from "react-router-dom";
 import '../pages styles/NavbarStyles.css';
+import {Component, useEffect, useState} from "react";
+import jwtDecode from "jwt-decode";
+import {checkLogin, TimeValid} from "../Util/TimeValid";
+
 
 const Navbar = () => {
+
+const [login, setLogin]= useState(false);
+useEffect(() => {
+
+
+
+}, []);
+
+
     return (
         <>
             <nav>

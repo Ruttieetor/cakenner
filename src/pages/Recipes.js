@@ -24,7 +24,7 @@ const Recipes = () => {
 
 
 
-    return <div className={"MainTable"}>
+    return <main className={"MainTable"}>
         <tr className={"TableHead"}>
             <td>ID</td>
             <td>Name</td>
@@ -45,7 +45,7 @@ const Recipes = () => {
 
         }
         )}
-    </div>;
+    </main>;
 };
 
 export default Recipes;

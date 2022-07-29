@@ -1,21 +1,23 @@
 import {Component, useEffect, useState} from "react";
 import axios from'axios'
 import '../pages styles/HomeStyles.css';
-import {Link} from "react-router-dom";
-import {Navigate } from 'react-router-dom';
 import jwtDecode from "jwt-decode";
+import {ValidToken} from "../Util/ValidToken";
 
 const Login = () => {
     const [username, setUsername]=useState('');
     const [password, setPassword]=useState('');
     const [showError, setShowError]=useState('');
-    const decode = jwtDecode(localStorage.getItem('token'));
+
+
     const refresh = () => {
         window.location.reload();
     }
+
+    const valid = ValidToken();
+    console.log(valid);
     async function login(e){
         e.preventDefault()
-        console.log(username,password)
 
         try{
             const response = await axios.post('http://localhost:8080/auth',{
@@ -23,8 +25,6 @@ const Login = () => {
                 password: password
             });
             localStorage.setItem('token', response.data);
-            console.log(jwtDecode(response.data))
-            console.log(Date.now());
 
             refresh();
 
@@ -35,11 +35,14 @@ const Login = () => {
         }
 
         }
-
-
-
+    if(valid === true){
+        return(
+            <div> You are logged in!</div>
+        )
+    }else{
     return(
         <div>
+
         <form onSubmit={login}>
             <label>
                 <p>Username</p>
@@ -69,6 +72,7 @@ const Login = () => {
             <p>{showError}</p>
         </div>
     )
+    }
 };
 
 export default Login;
