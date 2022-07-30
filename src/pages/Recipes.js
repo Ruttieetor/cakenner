@@ -26,11 +26,12 @@ const Recipes = () => {
 
     return <main className={"MainTable"}>
         <tr className={"TableHead"}>
-            <td>ID</td>
+            <td className={"id"}>ID </td>
             <td>Name</td>
             <td>Opinion</td>
             <td>From User</td>
             <td>Rating</td>
+            <td>Go</td>
         </tr>
 
         {recipes.map((recipes) => {
@@ -40,6 +41,7 @@ const Recipes = () => {
             <td>{recipes.opinion}</td>
             <td>{recipes.fromUser}</td>
             <td>{recipes.rating}</td>
+            <td><Link to={"/Recipe/" + recipes.id}  className="recipeLink" >Go</Link></td>
 
         </tr>
 

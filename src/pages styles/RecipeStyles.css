@@ -1,0 +1,81 @@
+.recipe{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-top: 5px solid #c7a0b8;
+    border-bottom: 5px solid #c4a68a;
+    border-radius: 30px;
+    background-color:#ffebf7;
+    padding: 20px;
+
+}
+
+
+.ing+img{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.rated{
+    display: flex;
+    flex-direction: row;
+    border-top: 5px solid #c7a0b8;
+    border-bottom: 5px solid #c4a68a;
+    border-radius: 30px;
+    background-color:#ffebf7;
+    padding-left: 20px;
+}
+
+.image{
+    display: flex;
+    max-height: 200px;
+    border: 5px solid #c7a0b8;
+    border-radius: 20px;
+
+}
+
+.ingredients{
+    display: flex;
+    padding: 20px;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+}
+
+.opinion{
+    display: flex;
+    flex-direction: column;
+    min-width: 75%;
+    max-width: 75%;
+}
+
+.rating{
+    display:block;
+}
+
+.from{
+    padding-left: 15px;
+    background-color: #ffebf7;
+    border:5px solid #c7a0b8;
+    max-width: 150px;
+    border-radius: 15px 50px 30px 5px;
+}
+
+.comment{
+    padding-left: 30px;
+    border-bottom: #c4a68a 5px solid;
+    border-left: #c4a68a 5px dashed;
+}
+
+.commentUser{
+    padding-left: 15px;
+    background-color: #ffebd9;
+    border:5px solid #c4a68a;
+    border-radius: 15px 50px 30px 5px;
+
+}

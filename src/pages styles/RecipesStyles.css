@@ -1,19 +1,35 @@
 .MainTable {
     width: 100%;
     display: table;
-
     margin-top: 10px;
+    border-collapse: collapse;
+    overflow: hidden;
+    border:1px solid black;
+text-align: center;
+}
+td:nth-child(3) { width: 50%;}
 
-
+td{
+    overflow: hidden;
 }
 
 .TableHead{
     background-color: #c4a68a;
+}
 
+
+.recipeLink{
+    max-height: 25px;
+    max-width: 30px;
 }
 
 .TableCell{
     display: table-row;
     border: solid;
-    border-width: 1px 0;
+    border-width: 2px 0;
 }
+
+
+
+
+

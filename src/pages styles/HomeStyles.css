@@ -2,6 +2,7 @@
 
 home {
     display: flex;
+
 }
 
 HomeAll{
@@ -14,7 +15,8 @@ HomeAll{
 
 .recipeHome{
     margin-top: 10px;
-    border: 5px solid;
+    border-top: 5px solid;
+    border-bottom: 5px solid;
     border-radius: 10px;
     border-style: solid;
     border-color: #c4a68a;
@@ -33,11 +35,6 @@ HomeAll{
 
 
 }
-
-.recipeHome:visited{
-
-}
-
 
 .recipeHome:hover{
     transform: scale(1.5);

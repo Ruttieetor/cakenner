@@ -1,8 +1,9 @@
 import {Component, useEffect, useState} from "react";
 import axios from'axios'
-import '../pages styles/HomeStyles.css';
-import jwtDecode from "jwt-decode";
+import '../pages styles/LogStyles.css';
 import {ValidToken} from "../Util/ValidToken";
+import {Logout} from "../Util/Logout";
+import {Link} from "react-router-dom";
 
 const Login = () => {
     const [username, setUsername]=useState('');
@@ -16,6 +17,8 @@ const Login = () => {
 
     const valid = ValidToken();
     console.log(valid);
+
+
     async function login(e){
         e.preventDefault()
 
@@ -37,11 +40,16 @@ const Login = () => {
         }
     if(valid === true){
         return(
-            <div> You are logged in!</div>
+            <div className={"loggedIn"}>
+                <div className={"innerbox"}>
+                <p> You are logged in!</p>
+                <button type="button"  onClick={Logout}>Logout</button>
+                </div>
+            </div>
         )
     }else{
     return(
-        <div>
+        <div className={"loggedOut"}>
 
         <form onSubmit={login}>
             <label>
@@ -66,10 +74,16 @@ const Login = () => {
                 />
             </label>
             <div>
-                <button type="login">Submit</button>
+                <p> </p>
+                <button type="login"  className={"loginButton"}>Submit</button>
             </div>
-        </form>
             <p>{showError}</p>
+        </form>
+
+            <div className={"registerLink"}>
+            <p>No account? Register now! <br></br> </p>
+            <Link to="/register" >Register</Link>
+            </div>
         </div>
     )
     }

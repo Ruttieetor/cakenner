@@ -6,6 +6,7 @@ import NoPage from "./pages/NoPage";
 import Recipe from "./pages/Recipe";
 import Recipes from "./pages/Recipes";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
                     <Route path="/recipe/:id" element={<Recipe />} />
                     <Route path="/recipes" element={<Recipes />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>
