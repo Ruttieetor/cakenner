@@ -1,0 +1,29 @@
+.wholeRecipe{
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    border-radius: 10px;
+    background-color: #ffebf7;
+    border:#c4a68a solid 10px;
+}
+
+.RecipeName{
+    margin: 10px;
+}
+
+.IngrList{
+    margin: 10px;
+    min-height: 100px;
+    max-height: 150px;
+}
+
+.SendRecipe{
+    margin: 10px;
+    min-height: 150px;
+    max-height: 300px;
+
+}
+.buttonSubmit{
+    align-self: center;
+
+}

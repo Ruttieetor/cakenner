@@ -1,9 +1,6 @@
 import {Component, useEffect, useState} from "react";
 import axios from'axios'
-//import '../pages styles/LogStyles.css';
-import {ValidToken} from "../Util/ValidToken";
-import {Logout} from "../Util/Logout";
-import {Link} from "react-router-dom";
+
 
 const Register = () => {
     const [username, setUsername]=useState('');

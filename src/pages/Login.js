@@ -1,9 +1,9 @@
 import {Component, useEffect, useState} from "react";
 import axios from'axios'
 import '../pages styles/LogStyles.css';
-import {ValidToken} from "../Util/ValidToken";
 import {Logout} from "../Util/Logout";
 import {Link} from "react-router-dom";
+import {TimeValid} from "../Util/TimeValid";
 
 const Login = () => {
     const [username, setUsername]=useState('');
@@ -15,8 +15,6 @@ const Login = () => {
         window.location.reload();
     }
 
-    const valid = ValidToken();
-    console.log(valid);
 
 
     async function login(e){
@@ -38,7 +36,7 @@ const Login = () => {
         }
 
         }
-    if(valid === true){
+    if(localStorage.getItem('token') && TimeValid){
         return(
             <div className={"loggedIn"}>
                 <div className={"innerbox"}>
