@@ -47,6 +47,10 @@
 
 }
 
+table, th, td {
+    border: 1px solid black;
+}
+
 .opinion{
     display: flex;
     flex-direction: column;
@@ -72,6 +76,15 @@
     border-left: #c4a68a 5px dashed;
 }
 
+.commentButton{
+    color:#c7a0b8;
+    background-color: #ffebf7;
+    border-radius: 10px;
+    min-width: 130px;
+    border:#c7a0b8 solid 1px;
+    font-weight: bold;
+}
+
 .commentUser{
     padding-left: 15px;
     background-color: #ffebd9;
@@ -89,4 +102,9 @@
 
 .commentForm{
     min-height: 100px;
+}
+
+
+.note{
+    font-size: 10px;
 }

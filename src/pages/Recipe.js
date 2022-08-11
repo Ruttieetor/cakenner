@@ -3,9 +3,10 @@ import {Component, useEffect, useState} from "react";
 import axios from "axios";
 import '../pages styles/RecipeStyles.css';
 import {GetUsername} from "../Util/GetUsername";
-import {ValidToken} from "../Util/ValidToken";
+
 import jwtDecode from "jwt-decode";
 import {TimeValid} from "../Util/TimeValid";
+import {Logout} from "../Util/Logout";
 
 const Recipe = () => {
     const {id} = useParams();
@@ -14,6 +15,9 @@ const Recipe = () => {
     const [ownComment, setOwnComment] = useState([]);
     const [plzloginMessage, setPlz] = useState([""]);
     const [exist, setExist]= useState([""]);
+
+
+
 
     useEffect(() => {
         async function fetchRatedRecipes(){
@@ -38,26 +42,42 @@ const Recipe = () => {
 
     async function addComment(e) {
         e.preventDefault()
-
+        if (localStorage.getItem('token') && TimeValid) {
             try {
                 const token = localStorage.getItem('token');
                 const tokenUser = jwtDecode(localStorage.getItem('token')).sub;
+                const toSend = {
 
-                const response = await axios.post("http://localhost:8080/addComment",
-                    {
-                        id: id,
-                        body: ownComment,
-                        fromUser: tokenUser
-                    });
+                    id: id,
+                    body: ownComment,
+                    fromUser: tokenUser
+
+                }
+                console.log(toSend)
+                await axios({
+
+                        method: "post",
+                        url: `http://localhost:8080/addComment`,
+                        data: toSend,
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                        }
+
+                    },
+                )
                 window.location.reload();
 
             } catch (e) {
                 console.error(e);
                 console.log("Error: could not send comment");
-                setPlz("Error: could not send comment, are you logged in?");
+                setPlz("Error: could not send comment, are you logged in or was your message too short?");
 
             }
+        } else {
+        Logout();
         }
+    }
 
 
     return <div>
@@ -112,9 +132,10 @@ const Recipe = () => {
                               value={ownComment}
                               onChange={(e) => setOwnComment(e.target.value)}
                     />
-
+                    <p className="note">A comment requires atleast 5 charachters!</p>
+                    <label><br/><br/></label>
                     <button type="submit" className={"commentButton"}>Submit</button>
-
+                    <label><br/><br/><br/><br/><br/></label>
                 </form>
             </div>
 

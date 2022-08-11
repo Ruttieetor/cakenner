@@ -1,7 +1,5 @@
 .piclink{
     Margin: 10px;
-
-    max-height: auto;
     font-size: 18px;
 
 }
@@ -39,11 +37,32 @@
     align-self: center;
     display: flex;
     flex-direction: column;
-    max-height: 300px;
-    max-height: 300px;
     max-width: 60%;
     min-width: 60%;
 
+}
+
+.SubmitButton{
+    color:#c7a0b8;
+    background-color: #ffebf7;
+    border-radius: 10px;
+    min-width: 130px;
+    border:#c7a0b8 solid 1px;
+    font-weight: bold;
+}
+.ImageFileSelect{
+
+    color:#c7a0b8;
+    background-color: #ffebf7;
+    min-width: 270px;
+    border-radius: 5px;
+    border:#c7a0b8 solid 1px;
+    font-weight: bold;
+
+}
+
+.imagePreview{
+    border:#c4a68a 6px solid;
 }
 
 .ratedBody{

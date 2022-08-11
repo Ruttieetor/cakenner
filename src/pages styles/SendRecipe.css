@@ -25,5 +25,10 @@
 }
 .buttonSubmit{
     align-self: center;
-
+    color:#c4a68a;
+    background-color: #ffebd9;
+    border-radius: 10px;
+    min-width: 130px;
+    border:#c7a0b8 solid 1px;
+    font-weight: bold;
 }

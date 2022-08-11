@@ -24,7 +24,10 @@ const Recipes = () => {
 
 
 
-    return <main className={"MainTable"}>
+    return (
+
+        <table>
+        <tbody>
         <tr className={"TableHead"}>
             <td className={"id"}>ID </td>
             <td>Name</td>
@@ -47,7 +50,10 @@ const Recipes = () => {
 
         }
         )}
-    </main>;
+    </tbody>
+
+        </table>)
+
 };
 
 export default Recipes;
