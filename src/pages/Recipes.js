@@ -6,6 +6,9 @@ import {Link} from "react-router-dom";
 const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
 
+    //fetched all recipes and maps these into a table
+
+
     useEffect(() => {
         async function fetchRatedRecipes(){
             try{

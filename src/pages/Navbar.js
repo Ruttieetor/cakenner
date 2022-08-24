@@ -13,13 +13,11 @@ const Navbar = () => {
 
     useEffect(() => {
         async function isAdmin() {
+            //checks if the user is an admin if yes it will set the state
             const token = jwtDecode(localStorage.getItem('token'));
-            //console.log(token.sub);
-            //console.log(`http://localhost:8080/IsAdmin/${token.sub}`);
             try {
                 const response = await axios.get(`http://localhost:8080/IsAdmin/${token.sub}`);
                 setAdmin(response.data);
-                //console.log(response.data)
             } catch (e) {
                 console.error(e);
             }
@@ -30,7 +28,7 @@ const Navbar = () => {
 
 }, []);
 
-
+//it will show more option depending if the JWT is in localstorage and if the state of being admin is 'yes'
     return (
         <>
             <nav>

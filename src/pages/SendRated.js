@@ -25,6 +25,8 @@ const SendRated = () => {
 
     useEffect(() => {
 
+        //fetched all the data so that the admin doesn't have to copy-paste it from another window
+        //it however does allow the admin to edit the text in case of unwanted aspects of writing styles.
         async function fetchRecipe() {
             try {
                 const response = await axios.get(`http://localhost:8080/showbyIdRecipe/${id}`)
@@ -43,7 +45,7 @@ const SendRated = () => {
             }
         }
 
-
+//checks if person is admin
         async function isAdmin() {
             const token = jwtDecode(localStorage.getItem('token'));
             //console.log(token.sub);
@@ -65,7 +67,7 @@ const SendRated = () => {
         fetchRecipe();
     }, []);
 
-
+//posting of the image into the backend, and it will send back a link to the picture.
     async function SendtoBE(data) {
 
 
@@ -94,7 +96,7 @@ const SendRated = () => {
         }
     }
 
-
+// the posting of the actual rated recipe
     async function SendToBe2(data) {
         console.log(data);
         console.log({
@@ -147,7 +149,9 @@ const SendRated = () => {
         setPreviewUrl(URL.createObjectURL(uploadedFile));
     }
 
-
+//if there is no image selected by the admin it will put a placeholder onto the data this placeholder however
+    // cant be removed at the moment.
+    // after this it will start the axios call to send the rated recipe to the backend
     async function Sending() {
         let data = await SendtoBE();
         if (data === undefined) {
@@ -161,7 +165,7 @@ const SendRated = () => {
         setPictureLink(data);
         return data;
     }
-
+// if not admin it will change the html elements to not appear
     if (admin === "yes" && localStorage.getItem('token') && TimeValid) {
 
 

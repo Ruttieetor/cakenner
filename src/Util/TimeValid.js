@@ -1,7 +1,7 @@
 import jwtDecode from "jwt-decode";
 
 
-
+//checks if the token isnt expired
 export function TimeValid(){
     const decodedToken = jwtDecode(localStorage.getItem('token'));
     const now = Date.now();

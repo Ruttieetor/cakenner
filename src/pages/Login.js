@@ -17,7 +17,8 @@ const Login = () => {
         window.location.reload();
     }
 
-
+// after succefull login it saves the JWT in the local storage
+    // if failed to login it shows an error
     async function login(e) {
         e.preventDefault()
 
@@ -27,12 +28,6 @@ const Login = () => {
                 password: password
             });
             localStorage.setItem('token', response.data);
-            //const maybe = (GetUsername());
-            //const wub = isAdmin(maybe);
-            //console.log(wub);
-            //const rights = await isAdmin(maybe);
-            //localStorage.setItem('admin', rights);
-            //console.log(localStorage.getItem('admin'));
             refresh();
 
         } catch (e) {
@@ -43,27 +38,11 @@ const Login = () => {
 
     }
 
-    async function isAdmin(username) {
 
-        console.log(`localhost:8080/IsAdmin/${username}`)
-
-        try {
-            const response = await axios.get(`http://localhost:8080/IsAdmin/admin`);
-            //localStorage.setItem('admin', response.data);
-            console.log(response.data);
-        } catch (e) {
-            console.error(e);
-        }
-    }
-
-    async function both(e){
-        e.preventDefault()
-        const name = "admin";
-        const ja = isAdmin(name);
-    }
 
 
     if (localStorage.getItem('token') && TimeValid) {
+        //if the JWT exist in the local storage and isn't expired yet it wil show a logout page instead
         return (
             <div className={"loggedIn"}>
                 <div className={"innerbox"}>

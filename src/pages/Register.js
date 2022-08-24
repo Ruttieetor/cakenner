@@ -8,7 +8,8 @@ const Register = () => {
     const [email, setEmail]=useState('');
     const [message, setMessage]=useState('');
 
-
+// registering doesn't do any checks so the user better be typing correctly it only checks if the username is unique
+// in the backend and will send an error if it's not.
     async function register(e){
         e.preventDefault()
         try{

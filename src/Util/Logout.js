@@ -1,6 +1,6 @@
 import { Redirect } from 'react-router-dom';
 
-
+//forces a logout by deleting the token
 export function Logout(){
 
         localStorage.removeItem('token');

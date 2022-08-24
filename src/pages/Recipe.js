@@ -20,6 +20,8 @@ const Recipe = () => {
 
 
     useEffect(() => {
+        //fetches the recipe from the backend if it doesnt exist it wil show an error on the page that it doesnt
+        // it however will still show allot of the html elements emty
         async function fetchRatedRecipes(){
             try{
                 const response = await axios.get(`http://localhost:8080/recipe/${id}`);
@@ -39,7 +41,8 @@ const Recipe = () => {
     },[]);
 
 
-
+// adding a comment will add the comment to the set of comments but because it is a set the order of comments is random.
+    //this will mostly show in backend.
     async function addComment(e) {
         e.preventDefault()
         if (localStorage.getItem('token') && TimeValid) {

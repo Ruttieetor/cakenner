@@ -1,4 +1,4 @@
-import {Component, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import axios from 'axios'
 import '../pages styles/ToBeRatedStyles.css';
 import {Link} from "react-router-dom";
@@ -9,7 +9,7 @@ const ToBeRated = () => {
 
     const [recipes, setRecipes] = useState([]);
     const [admin, setAdmin] = useState(["no"]);
-
+//almost the same as the fetch all rated recipe only this time the list of to be rated recipes
 
     useEffect(() => {
         async function fetchRecipes() {
@@ -25,8 +25,6 @@ const ToBeRated = () => {
         }
         async function isAdmin() {
             const token = jwtDecode(localStorage.getItem('token'));
-            //console.log(token.sub);
-            //console.log(`http://localhost:8080/IsAdmin/${token.sub}`);
             try {
                 const response = await axios.get(`http://localhost:8080/IsAdmin/${token.sub}`);
                 setAdmin(response.data);
@@ -40,7 +38,7 @@ const ToBeRated = () => {
         isAdmin();
         fetchRecipes();
     }, []);
-
+//checks if user is admin otherwhise it won't show html elements
     if (admin === "yes" && localStorage.getItem('token') && TimeValid) {
 
 

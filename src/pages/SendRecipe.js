@@ -1,4 +1,3 @@
-
 import {useState} from "react";
 import '../pages styles/SendRecipe.css';
 import axios from "axios";
@@ -10,13 +9,12 @@ import {Logout} from "../Util/Logout";
 const SendRecipe = () => {
 
 
+    const [ingrList, setIngrList] = useState([]);
+    const [recipe, setRecipe] = useState([]);
+    const [recipeName, setRecipeName] = useState([]);
+    const [message, setMessage] = useState([""]);
 
-        const [ingrList, setIngrList] = useState([]);
-        const [recipe, setRecipe] = useState([]);
-        const [recipeName, setRecipeName] = useState([]);
-        const [message, setMessage] = useState([""]);
-
-
+//checks if the token is in storage and it isnt expired if its either not there or expired it won't show thr html elements
     if (localStorage.getItem('token') && TimeValid) {
         const user = jwtDecode(localStorage.getItem('token')).sub;
         const toSend = {
@@ -28,7 +26,7 @@ const SendRecipe = () => {
 
         }
 
-
+//sends the recipe to the backend this wont work without jwt token you get from login
         async function SendRecipetoBE(e) {
             e.preventDefault()
             //console.log({"Authorization": `Bearer ${localStorage.getItem('token')}`})
@@ -89,9 +87,9 @@ const SendRecipe = () => {
 
             <label><br/><br/><br/><br/><br/></label>
         </div>)
-    }else{
+    } else {
         Logout();
-        return(<label><br/>ACCES DENIED</label>)
+        return (<label><br/>ACCES DENIED</label>)
     }
 };
 export default SendRecipe;

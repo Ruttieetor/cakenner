@@ -8,6 +8,8 @@ const Home = () => {
 
     const [recipes, setRecipes] = useState([]);
 
+
+    //fetch all rated recipes
     useEffect(() => {
         async function fetchRatedRecipes(){
             try{
@@ -29,6 +31,7 @@ const Home = () => {
     return <div className="HomeAll">
 
         {
+            // map all fetched recipes into tiles
                 recipes.map((recipes, key) => {
                 return <Link to={"/Recipe/" + recipes.id}  className="recipeHome"  key={key}>
                     <p>{recipes.name}</p>
