@@ -1,11 +1,7 @@
 
 
-home {
-    display: flex;
 
-}
-
-HomeAll{
+.homePage{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -31,9 +27,6 @@ HomeAll{
 
     flex-direction: column;
 
-
-
-
 }
 
 .recipeHome:hover{
@@ -51,9 +44,6 @@ HomeAll{
     border-radius: 5px;
     border-style: solid;
     border-color: #c4a68a;
-
-
-
 }
 
 .rating {

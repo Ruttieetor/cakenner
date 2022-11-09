@@ -29,7 +29,7 @@ const Recipes = () => {
 
     return (
 
-        <table>
+        <table className={"MainTable"}>
         <tbody>
         <tr className={"TableHead"}>
             <td className={"id"}>ID </td>

@@ -44,16 +44,16 @@ const Login = () => {
     if (localStorage.getItem('token') && TimeValid) {
         //if the JWT exist in the local storage and isn't expired yet it wil show a logout page instead
         return (
-            <div className={"loggedIn"}>
+            <loggedInScreen className={"loggedIn"}>
                 <div className={"innerbox"}>
                     <p> You are logged in!</p>
                     <button type="button" onClick={Logout}>Logout</button>
                 </div>
-            </div>
+            </loggedInScreen>
         )
     } else {
         return (
-            <div className={"loggedOut"}>
+            <login className={"loggedOut"}>
 
                 <form onSubmit={login}>
                     <label>
@@ -85,11 +85,11 @@ const Login = () => {
                 </form>
 
                 <div className={"registerLink"}>
-                    <p>No account? Register now! <br></br></p>
+                    <p>No account? Register now! </p>
                     <Link to="/register">Register</Link>
                 </div>
 
-            </div>
+            </login>
         )
     }
 };

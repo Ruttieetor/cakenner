@@ -3,18 +3,17 @@
     display: table;
     margin-top: 10px;
     border-collapse: collapse;
-    overflow: hidden;
     border:1px solid black;
     text-align: center;
 }
 td:nth-child(3) { width: 50%;}
 
-td{
-    overflow: hidden;
-}
 
 .TableHead{
     background-color: #c4a68a;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
 }
 
 
@@ -27,6 +26,7 @@ td{
     display: table-row;
     border: solid;
     border-width: 2px 0;
+
 }
 
 

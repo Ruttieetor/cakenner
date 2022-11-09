@@ -22,6 +22,7 @@ const SendRated = () => {
     const [picture, setPicture] = useState([]);
     const [previewUrl, setPreviewUrl] = useState(["http://localhost:8080/images/nothing.jpg"]);
     const [admin, setAdmin] = useState(["no"]);
+    const [exist, setExist] = useState(["exist"]);
 
     useEffect(() => {
 
@@ -42,6 +43,7 @@ const SendRated = () => {
             } catch (e) {
                 console.error(e);
                 console.log("Recipe doesnt exist");
+                setExist("Recipe doesnt exist")
             }
         }
 
@@ -153,101 +155,111 @@ const SendRated = () => {
     // cant be removed at the moment.
     // after this it will start the axios call to send the rated recipe to the backend
     async function Sending() {
-        let data = await SendtoBE();
-        if (data === undefined) {
-            data = "http://localhost:8080/images/nothing.jpg";
+        try {
+            let data = await SendtoBE();
+            if (data === undefined) {
+                data = "http://localhost:8080/images/nothing.jpg";
 
+            }
+            await SendToBe2(data);
+        } catch (e) {
+            console.error(e);
         }
-        await SendToBe2(data);
     }
 
     function setting(data) {
         setPictureLink(data);
         return data;
     }
+
+
+    if (exist == "exist") {
 // if not admin it will change the html elements to not appear
-    if (admin === "yes" && localStorage.getItem('token') && TimeValid) {
+        if (admin === "yes" && localStorage.getItem('token') && TimeValid) {
 
 
-        return (<div>
+            return (<wrapper>
 
-            <form className={"wholeRatedRecipe"} onSubmit={SendToBe2}>
+                <form className={"wholeRatedRecipe"} onSubmit={SendToBe2}>
 
-                <div className={"ratedname"}>
-                    <label>Name: </label>
-                    <input
-                        type="text"
-                        name="username"
-                        id="name"
-                        value={recipeName}
-                        onChange={(e) => setRecipeName(e.target.value)}
-                    />
-                </div>
+                    <name className={"ratedname"}>
+                        <label>Name: </label>
+                        <input
+                            type="field"
+                            name="username"
+                            id="name"
+                            value={recipeName}
+                            onChange={(e) => setRecipeName(e.target.value)}
+                        />
+                    </name>
 
-                <div className={"ratedrating"}>
-                    <label>Rating: </label>
-                    <input
-                        type="number"
-                        name="rating"
-                        max="10"
-                        min="0"
-                        id="rating"
-                        onChange={(e) => setRating(e.target.value)}
-                    />
-                </div>
 
-                <div className={"ratedingredientList"}>
-                    <label>Ingredient List: </label>
-                    <textarea onChange={(e) => setIngrList(e.target.value)}
-                              value={ingrList}>
+                    <rating className={"ratedrating"}>
+                        <label>Rating: </label>
+                        <input
+                            type="number"
+                            name="rating"
+                            max="10"
+                            min="0"
+                            id="rating"
+                            onChange={(e) => setRating(e.target.value)}
+                        />
+                    </rating>
+
+                    <ingredientList className={"ratedingredientList"}>
+                        <label>Ingredient List: </label>
+                        <textarea onChange={(e) => setIngrList(e.target.value)}
+                                  value={ingrList}>
         </textarea>
-                </div>
+                    </ingredientList>
 
-                <div className={"ratedBody"}>
+                    <body className={"ratedBody"}>
                     <label>Recipe: </label>
                     <textarea onChange={(e) => setBody(e.target.value)}
                               value={body}>
         </textarea>
-                </div>
+                    </body>
 
-                <div className={"ratedOpinion"}>
-                    <label>Opinion: </label>
-                    <textarea onChange={(e) => setOpinion(e.target.value)}>
+                    <opinion className={"ratedOpinion"}>
+                        <label>Opinion: </label>
+                        <textarea onChange={(e) => setOpinion(e.target.value)}>
         </textarea>
-                </div>
-                <div className={"ratedPicLink"}>
-                    <label><br/><br/><br/></label>
-                    <input type="file"
-                           className="ImageFileSelect"
-                           id="pic" name="pic"
-                           accept="image/jpeg" onChange={handleImageChange}/>
+                    </opinion>
+                    <picture className={"ratedPicLink"}>
+                        <input type="file"
+                               className="ImageFileSelect"
+                               id="pic" name="pic"
+                               accept="image/jpeg" onChange={handleImageChange}/>
 
-                </div>
-                <h3>{message}</h3>
+                    </picture>
+                    <h3>{message}</h3>
 
-                {previewUrl && <label>
-                    <p>preview:<br></br></p>
-                    <img src={previewUrl} alt="preview image" className="imagePreview" width="200px" height="200px"/>
-                    <p><br></br></p>
-                </label>
+                    {previewUrl && <label>
+                        <p>preview:</p>
+                        <img src={previewUrl} alt="preview image" className="imagePreview" width="200px"
+                             height="200px"/>
 
-                }
+                    </label>
 
-                <button type="button" onClick={Sending} className="SubmitButton">
+                    }
 
-
-                    Submit
-                </button>
-
-            </form>
-            <label><br/><br/><br/><br/><br/></label>
-        </div>)
+                    <button type="button" onClick={Sending} className="SubmitButton">
 
 
+                        Submit
+                    </button>
+
+                </form>
+            </wrapper>)
+
+
+        } else {
+            return (<label>ACCES DENIED</label>);
+        }
+        ;
     } else {
-        return (<label><br/>ACCES DENIED</label>);
+        return (<label>Does not exist</label>)
     }
-    ;
 };
 
 export default SendRated;

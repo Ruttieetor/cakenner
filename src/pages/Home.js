@@ -1,7 +1,8 @@
-import {Component, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import axios from'axios'
 import '../pages styles/HomeStyles.css';
 import {Link} from "react-router-dom";
+
 
 
 const Home = () => {
@@ -28,7 +29,7 @@ const Home = () => {
 
 
 
-    return <div className="HomeAll">
+    return <homePage className="HomeAll">
 
         {
             // map all fetched recipes into tiles
@@ -43,9 +44,7 @@ const Home = () => {
             })
 
         }
-
-        <label><br/><br/><br/><br/><br/></label>
-    </div>
+    </homePage>
         ;
 };
 

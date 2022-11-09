@@ -10,7 +10,6 @@ const Navbar = () => {
     const [admin, setAdmin] = useState(["no"]);
 
 
-
     useEffect(() => {
         async function isAdmin() {
             //checks if the user is an admin if yes it will set the state
@@ -24,19 +23,20 @@ const Navbar = () => {
 
 
         }
+
         isAdmin();
 
-}, []);
+    }, []);
 
 //it will show more option depending if the JWT is in localstorage and if the state of being admin is 'yes'
     return (
         <>
             <nav>
-                <div className='banner'>
+                <title className='banner'>
                     <h1>Cakenner</h1>
 
-                </div>
-                <div className='navBar'>
+                </title>
+                <navLinks className='navBar'>
                     <Link to="/">Home</Link>
                     <Link to="/recipes">Recipes</Link>
                     {(!localStorage.getItem('token')) && <Link to="/login">Login</Link>}
@@ -44,7 +44,7 @@ const Navbar = () => {
                     {(localStorage.getItem('token')) && <Link to="/sendRecipe">Send recipe</Link>}
                     {admin === "yes" && (localStorage.getItem('token')) && <Link to="/rate">Rate recipe</Link>}
 
-                </div>
+                </navLinks>
             </nav>
             <Outlet/>
         </>

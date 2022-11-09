@@ -1,4 +1,4 @@
-import {Component, useEffect, useState} from "react";
+import {useState} from "react";
 import axios from'axios'
 
 
@@ -20,6 +20,7 @@ const Register = () => {
             });
             console.log("Account has been created");
             setMessage("Account has been created");
+            window.location.href = "http://localhost:3000/login";
 
         }catch(e){
             console.log(e.response.data);
@@ -29,7 +30,7 @@ const Register = () => {
     }
 
     return(
-        <div>
+        <registerPage>
             <form onSubmit={register}>
                 <label>
                     <p>Username</p>
@@ -64,10 +65,10 @@ const Register = () => {
                     />
                 </label>
 
-                <div>
+                <registerButtonAndErrorMessages>
                     <p>{message}</p>
                     <button type="submit">Register</button>
-                </div>
+                </registerButtonAndErrorMessages>
 
 
                 <p></p>
@@ -83,7 +84,7 @@ const Register = () => {
 
 
 
-        </div>
+        </registerPage>
     );
 }
 export default Register;

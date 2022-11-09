@@ -84,12 +84,10 @@ const SendRecipe = () => {
                 <button type="submit" className={"buttonSubmit"}>Submit</button>
             </form>
 
-
-            <label><br/><br/><br/><br/><br/></label>
         </div>)
     } else {
         Logout();
-        return (<label><br/>ACCES DENIED</label>)
+        return (<label>ACCES DENIED</label>)
     }
 };
 export default SendRecipe;

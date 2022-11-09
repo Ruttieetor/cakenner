@@ -1,12 +1,17 @@
-import {Link, useParams} from "react-router-dom";
-import {Component, useEffect, useState} from "react";
+import { useParams} from "react-router-dom";
+import { useEffect, useState} from "react";
 import axios from "axios";
 import '../pages styles/RecipeStyles.css';
-import {GetUsername} from "../Util/GetUsername";
 
 import jwtDecode from "jwt-decode";
 import {TimeValid} from "../Util/TimeValid";
 import {Logout} from "../Util/Logout";
+
+
+import RecipeBody from "../Util/ReceptBody";
+import RatingBody from "../Util/RatingBody";
+
+
 
 const Recipe = () => {
     const {id} = useParams();
@@ -14,7 +19,7 @@ const Recipe = () => {
     const [comments, setComments] = useState([]);
     const [ownComment, setOwnComment] = useState([]);
     const [plzloginMessage, setPlz] = useState([""]);
-    const [exist, setExist]= useState([""]);
+    const [exist, setExist]= useState(["exist"]);
 
 
 
@@ -74,43 +79,22 @@ const Recipe = () => {
             } catch (e) {
                 console.error(e);
                 console.log("Error: could not send comment");
-                setPlz("Error: could not send comment, are you logged in or was your message too short?");
+                setPlz("Error: Could not send comment, message too short?");
 
             }
         } else {
-        Logout();
+            setPlz("You need to be logged in to leave a comment!");
         }
     }
 
 
-    return <div>
-        <h3>{exist}</h3>
-        <h3 className={"from"}>From: {recipe.fromUser}</h3>
-        <div className={"recipe"}>
-            <div className={"ing+img"}>
-            <img src={recipe.pictureLink} className={"image"}/>
-            <h3 className={"ingredients"}> Ingredient List:</h3>
-                <p>{recipe.ingredientList}</p>
-            </div>
-            <div className={"body"}>
-            <h3 > Recipe: </h3>
-            <p>{recipe.body}</p>
-            </div>
 
-        </div>
-        <div className={"rated"}>
-            <div className={"opinion"}>
-            <h3 >Opinion:</h3>
-            <p>{recipe.opinion}</p>
-        </div>
-            <h3 className={"rating"}> Rating: {recipe.rating}</h3>
+    if(exist == "exist"){
+    return <recipepage>
 
-        </div>
-
-
-
-
-        <div className={"commentSection"}>
+        <recipeBody>{RecipeBody(recipe)}</recipeBody>
+        <rating>{RatingBody(recipe)}</rating>
+        <commentsection className={"commentSection"}>
             <h3>Comments: </h3>
         {
             comments.map((comments, key) => {
@@ -122,13 +106,12 @@ const Recipe = () => {
             })
 
         }
-        </div>
+        </commentsection>
 
             <div>
 
                 <form onSubmit={addComment} className={"ownComment"}>
                     <h3>{plzloginMessage}</h3>
-
                     <label>Leave a comment!</label>
                     <textarea className={"commentForm"}
                               type={"text"}
@@ -136,13 +119,18 @@ const Recipe = () => {
                               onChange={(e) => setOwnComment(e.target.value)}
                     />
                     <p className="note">A comment requires atleast 5 charachters!</p>
-                    <label><br/><br/></label>
                     <button type="submit" className={"commentButton"}>Submit</button>
-                    <label><br/><br/><br/><br/><br/></label>
+
                 </form>
             </div>
 
-    </div>;
+    </recipepage>;
+    }
+    else{
+        return <noExisto className="noEx">
+            Does not exist
+        </noExisto>
+    }
 };
 
 export default Recipe;
